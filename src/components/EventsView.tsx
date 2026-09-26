@@ -25,7 +25,7 @@ export const EventsView: React.FC<EventsViewProps> = ({ events, onAcknowledge })
   const yesterdayStr = new Date(Date.now() - 86400000).toISOString().split('T')[0];
 
   const filteredEvents = events.filter((evt) => {
-    const evtDate = evt.timestamp.split('T')[0];
+    const evtDate = evt.timestamp ? evt.timestamp.split('T')[0] : todayStr;
 
     // Date filter
     if (dateFilter === 'today' && evtDate !== todayStr) return false;
@@ -119,8 +119,12 @@ export const EventsView: React.FC<EventsViewProps> = ({ events, onAcknowledge })
         ) : (
           <div className="divide-y divide-neutral-800/80">
             {filteredEvents.map((evt) => {
-              const timeStr = evt.timestamp.split('T')[1]?.substring(0, 8) || evt.timestamp;
-              const dateStr = evt.timestamp.split('T')[0];
+              const timeStr = evt.timestamp?.includes('T')
+                ? evt.timestamp.split('T')[1]?.substring(0, 8)
+                : evt.timestamp || '--:--:--';
+              const dateStr = evt.timestamp?.includes('T')
+                ? evt.timestamp.split('T')[0]
+                : todayStr;
               const isAlert = evt.event_type === 'POTENTIAL_FALL' || evt.event_type === 'PROLONGED_INACTIVITY';
 
               return (

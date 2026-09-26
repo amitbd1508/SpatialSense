@@ -15,7 +15,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-full \
     libgl1 \
     libglib2.0-0 \
+    libv4l-0 \
+    libgstreamer1.0-0 \
     v4l-utils \
+    procps \
+    ca-certificates \
     curl \
     && rm -rf /var/lib/apt/lists/*
 

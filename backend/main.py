@@ -10,8 +10,15 @@ from pydantic import BaseModel
 from typing import List, Optional, Dict, Any
 import time
 import os
+import sys
 import glob
 import threading
+
+# Ensure local backend modules are always resolvable
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+if CURRENT_DIR not in sys.path:
+    sys.path.insert(0, CURRENT_DIR)
+
 from cv_pipeline import EdgeCVPipeline
 from sensor_interface import SensorObservation, CameraSensor
 

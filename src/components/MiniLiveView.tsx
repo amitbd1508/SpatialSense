@@ -120,19 +120,19 @@ export const MiniLiveView: React.FC<MiniLiveViewProps> = ({
       zones.forEach((z, idx) => {
         const colors = ['rgba(16, 185, 129, 0.15)', 'rgba(14, 165, 233, 0.15)', 'rgba(245, 158, 11, 0.15)'];
         const borderColors = ['#10b981', '#0ea5e9', '#f59e0b'];
-        const zx = z.polygon[0]?.x * w || 10 + idx * 40;
-        const zy = z.polygon[0]?.y * h || 10;
-        const zw = 50;
-        const zh = 40;
+        const zx = (z.x ?? (0.05 + (idx % 3) * 0.3)) * w;
+        const zy = (z.y ?? (0.1 + Math.floor(idx / 3) * 0.4)) * h;
+        const zw = (z.width ?? 0.25) * w;
+        const zh = (z.height ?? 0.25) * h;
 
-        ctx.fillStyle = colors[idx % colors.length];
-        ctx.strokeStyle = borderColors[idx % borderColors.length];
+        ctx.fillStyle = z.color ? `${z.color}25` : colors[idx % colors.length];
+        ctx.strokeStyle = z.color || borderColors[idx % borderColors.length];
         ctx.strokeRect(zx, zy, zw, zh);
         ctx.fillRect(zx, zy, zw, zh);
 
         ctx.fillStyle = '#94a3b8';
         ctx.font = '8px sans-serif';
-        ctx.fillText(z.name.substring(0, 8), zx + 2, zy + 10);
+        ctx.fillText((z.name || `Zone ${idx + 1}`).substring(0, 10), zx + 2, zy + 10);
       });
 
       // Draw Person Centroid

@@ -329,7 +329,9 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
 
         <div className="divide-y divide-neutral-800/80">
           {events.slice(0, 5).map((evt) => {
-            const timeStr = evt.timestamp.split('T')[1]?.substring(0, 8) || evt.timestamp;
+            const timeStr = evt.timestamp?.includes('T')
+              ? evt.timestamp.split('T')[1]?.substring(0, 8)
+              : evt.timestamp || '--:--:--';
             const isAlert = evt.event_type === 'POTENTIAL_FALL' || evt.event_type === 'PROLONGED_INACTIVITY';
 
             return (
