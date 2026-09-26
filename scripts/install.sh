@@ -9,7 +9,8 @@ echo "=========================================================="
 
 echo "[1/4] Updating package lists and installing core dependencies..."
 sudo apt-get update
-sudo apt-get install -y python3-pip python3-venv libgl1-mesa-glx libglib2.0-0 v4l-utils
+# Note: Debian 12 (Bookworm) uses 'libgl1' instead of the deprecated 'libgl1-mesa-glx'
+sudo apt-get install -y python3-pip python3-venv python3-full libgl1 v4l-utils
 
 echo "[2/4] Setting up Python virtual environment..."
 python3 -m venv venv
