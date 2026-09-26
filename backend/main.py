@@ -5,7 +5,7 @@ Exposes standardized REST endpoints matching the web dashboard specification.
 """
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import StreamingResponse, Response
+from fastapi.responses import StreamingResponse, Response, HTMLResponse
 from pydantic import BaseModel
 from typing import List, Optional, Dict, Any
 import time
@@ -84,6 +84,112 @@ def camera_worker_loop():
 
 camera_thread = threading.Thread(target=camera_worker_loop, daemon=True)
 camera_thread.start()
+
+@app.get("/", response_class=HTMLResponse)
+def root_view():
+    return """
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SpatialSense - Raspberry Pi Edge Node</title>
+        <style>
+            body {
+                background: #090d16;
+                color: #e2e8f0;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                margin: 0;
+                padding: 24px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .card {
+                background: #0f172a;
+                border: 1px solid #1e293b;
+                border-radius: 12px;
+                max-width: 800px;
+                width: 100%;
+                overflow: hidden;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            }
+            .header {
+                padding: 16px 20px;
+                border-bottom: 1px solid #1e293b;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .title {
+                font-size: 16px;
+                font-weight: 600;
+                color: #f8fafc;
+            }
+            .badge {
+                background: rgba(16, 185, 129, 0.15);
+                color: #34d399;
+                border: 1px solid rgba(16, 185, 129, 0.3);
+                padding: 4px 10px;
+                border-radius: 9999px;
+                font-size: 12px;
+                font-weight: 500;
+            }
+            .video-container {
+                position: relative;
+                width: 100%;
+                aspect-ratio: 16 / 10;
+                background: #000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .video-container img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+            .footer {
+                padding: 16px 20px;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 12px;
+                font-size: 13px;
+                background: #090d16;
+                border-top: 1px solid #1e293b;
+            }
+            .link-btn {
+                background: #1e293b;
+                color: #38bdf8;
+                text-decoration: none;
+                padding: 6px 12px;
+                border-radius: 6px;
+                transition: background 0.2s;
+            }
+            .link-btn:hover {
+                background: #334155;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <div class="header">
+                <span class="title">SpatialSense: Raspberry Pi Live Camera Stream</span>
+                <span class="badge">Edge CV Active</span>
+            </div>
+            <div class="video-container">
+                <img src="/api/camera/stream" alt="Live USB Camera Feed" onerror="this.onerror=null; this.src=''; this.parentElement.innerHTML='<p style=\\'color:#94a3b8;\\'>Connecting to USB Camera (/dev/video0)...</p>';" />
+            </div>
+            <div class="footer">
+                <a class="link-btn" href="/api/camera/stream" target="_blank">Direct MJPEG Stream</a>
+                <a class="link-btn" href="/api/health" target="_blank">Health Check</a>
+                <a class="link-btn" href="/api/status" target="_blank">Live Room Status</a>
+                <a class="link-btn" href="/docs" target="_blank">Interactive API Docs (Swagger)</a>
+            </div>
+        </div>
+    </body>
+    </html>
+    """
 
 @app.get("/api/health")
 def get_health():
