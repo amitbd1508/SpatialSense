@@ -41,16 +41,132 @@ class CameraSensor(BaseSensor):
     Performs on-device contour and bounding-box detection via OpenCV.
     Never uploads raw frames; emits anonymous SensorObservation.
     """
-    def __init__(self, camera_index: int = 0, width: int = 640, height: int = 480, fps: int = 10):
+    def __init__(
+        self,
+        camera_index: int = 0,
+        width: int = 640,
+        height: int = 480,
+        fps: int = 10,
+        rotation: int = 0,
+        flip_h: bool = False,
+        brightness: int = 0,
+        contrast: float = 1.0,
+        privacy_mode: str = "silhouette_only",
+        motion_threshold: int = 1200,
+    ):
         self.camera_index = camera_index
         self.width = width
         self.height = height
         self.fps = fps
+        self.rotation = rotation
+        self.flip_h = flip_h
+        self.brightness = brightness
+        self.contrast = contrast
+        self.privacy_mode = privacy_mode
+        self.motion_threshold = motion_threshold
+        self.device_name = f"USB Camera (/dev/video{camera_index})"
+
         self.cap = None
         self.bg_subtractor = None
         self.is_connected = False
         self.last_frame = None
         self.last_observation = None
+        self.lock = threading.Lock() if 'threading' in globals() else None
+
+    @staticmethod
+    def list_available_cameras():
+        """Scans Linux /dev/video* devices and queries metadata."""
+        import glob
+        import os
+        devices = []
+        video_paths = sorted(glob.glob("/dev/video*"))
+
+        # Look up device names from sysfs if available on Linux
+        for p in video_paths:
+            base = os.path.basename(p)
+            sys_name_path = f"/sys/class/video4linux/{base}/name"
+            card_name = f"USB Video Device ({base})"
+            if os.path.exists(sys_name_path):
+                try:
+                    with open(sys_name_path, "r") as f:
+                        name_str = f.read().strip()
+                        if name_str:
+                            card_name = name_str
+                except Exception:
+                    pass
+
+            idx = 0
+            try:
+                idx = int(base.replace("video", ""))
+            except ValueError:
+                idx = 0
+
+            devices.append({
+                "index": idx,
+                "devicePath": p,
+                "name": card_name,
+                "availableResolutions": ["320x240", "640x480", "1280x720", "1920x1080"],
+                "isAvailable": True,
+            })
+
+        # If no /dev/video found (e.g. running in virtual env/container without camera passed), provide indices
+        if not devices:
+            devices = [
+                {"index": 0, "devicePath": "/dev/video0", "name": "Default USB Camera 0", "availableResolutions": ["640x480", "1280x720"], "isAvailable": False},
+                {"index": 1, "devicePath": "/dev/video1", "name": "Secondary USB Camera 1", "availableResolutions": ["640x480", "1280x720"], "isAvailable": False},
+                {"index": 2, "devicePath": "/dev/video2", "name": "Auxiliary Camera 2", "availableResolutions": ["640x480"], "isAvailable": False},
+            ]
+        return devices
+
+    def reconfigure(
+        self,
+        camera_index: Optional[int] = None,
+        width: Optional[int] = None,
+        height: Optional[int] = None,
+        fps: Optional[int] = None,
+        rotation: Optional[int] = None,
+        flip_h: Optional[bool] = None,
+        brightness: Optional[int] = None,
+        contrast: Optional[float] = None,
+        privacy_mode: Optional[str] = None,
+        motion_threshold: Optional[int] = None,
+    ) -> bool:
+        """Dynamically reconfigures the camera device, resolution, and filters."""
+        needs_reinit = False
+
+        if camera_index is not None and camera_index != self.camera_index:
+            self.camera_index = camera_index
+            needs_reinit = True
+
+        if width is not None and width != self.width:
+            self.width = width
+            needs_reinit = True
+
+        if height is not None and height != self.height:
+            self.height = height
+            needs_reinit = True
+
+        if fps is not None and fps != self.fps:
+            self.fps = fps
+            needs_reinit = True
+
+        if rotation is not None:
+            self.rotation = rotation
+        if flip_h is not None:
+            self.flip_h = flip_h
+        if brightness is not None:
+            self.brightness = brightness
+        if contrast is not None:
+            self.contrast = contrast
+        if privacy_mode is not None:
+            self.privacy_mode = privacy_mode
+        if motion_threshold is not None:
+            self.motion_threshold = motion_threshold
+
+        if needs_reinit:
+            self.release()
+            return self.initialize()
+        return True
 
     def initialize(self) -> bool:
         try:
@@ -63,7 +179,7 @@ class CameraSensor(BaseSensor):
                 self.cap = cv2.VideoCapture(self.camera_index)
             
             if not self.cap.isOpened():
-                print(f"[CameraSensor] Error: Unable to open camera at /dev/video{self.camera_index}")
+                print(f"[CameraSensor] Notice: Camera index {self.camera_index} (/dev/video{self.camera_index}) is not currently responding.")
                 self.is_connected = False
                 return False
 
@@ -76,7 +192,7 @@ class CameraSensor(BaseSensor):
                 history=300, varThreshold=32, detectShadows=False
             )
             self.is_connected = True
-            print(f"[CameraSensor] Successfully initialized USB camera (Resolution: {self.width}x{self.height} @ {self.fps}fps)")
+            print(f"[CameraSensor] Successfully initialized USB camera {self.camera_index} ({self.width}x{self.height} @ {self.fps}fps)")
             return True
         except Exception as e:
             print(f"[CameraSensor] Initialization exception: {e}")
@@ -91,6 +207,22 @@ class CameraSensor(BaseSensor):
         ret, frame = self.cap.read()
         if not ret or frame is None:
             return None
+
+        # Apply rotation if configured
+        if self.rotation == 90:
+            frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
+        elif self.rotation == 180:
+            frame = cv2.rotate(frame, cv2.ROTATE_180)
+        elif self.rotation == 270:
+            frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
+
+        # Apply horizontal flip (mirroring) if requested
+        if self.flip_h:
+            frame = cv2.flip(frame, 1)
+
+        # Apply contrast & brightness
+        if self.contrast != 1.0 or self.brightness != 0:
+            frame = cv2.convertScaleAbs(frame, alpha=self.contrast, beta=self.brightness)
 
         # Resize for consistent, deterministic processing
         frame = cv2.resize(frame, (self.width, self.height))
@@ -108,7 +240,7 @@ class CameraSensor(BaseSensor):
         max_area = 0
         for c in contours:
             area = cv2.contourArea(c)
-            if area > max_area and area > 1200: # Minimum presence threshold
+            if area > max_area and area > self.motion_threshold:
                 max_area = area
                 max_contour = c
 
@@ -129,6 +261,8 @@ class CameraSensor(BaseSensor):
                 activity = "POSSIBLE_FALL"
             elif aspect_ratio >= 0.55:
                 activity = "SITTING"
+            elif norm_w > 0.15 and norm_h > 0.40:
+                activity = "WALKING"
 
             obs = SensorObservation(
                 timestamp=iso_now,
@@ -138,7 +272,8 @@ class CameraSensor(BaseSensor):
                 bbox={"x": round(norm_x, 3), "y": round(norm_y, 3), "width": round(norm_w, 3), "height": round(norm_h, 3)},
                 activity=activity,
                 confidence=0.92,
-                sensor_type="camera"
+                sensor_type="camera",
+                metadata={"area": int(max_area), "aspect_ratio": round(aspect_ratio, 2)}
             )
             self.last_observation = obs
             return obs
@@ -165,8 +300,15 @@ class CameraSensor(BaseSensor):
         import cv2
 
         preview = self.last_frame.copy()
-        # Apply privacy blur or darken background
-        preview = cv2.convertScaleAbs(preview, alpha=0.45, beta=10)
+
+        # Handle privacy mode styles
+        if self.privacy_mode == "wireframe_only":
+            # Black background with green HUD
+            preview[:] = (10, 12, 16)
+        elif self.privacy_mode == "silhouette_only":
+            # Privacy shadow mask
+            preview = cv2.convertScaleAbs(preview, alpha=0.35, beta=10)
+        # else "full_vision" uses normal frame
 
         obs = self.last_observation
         if obs and obs.presence and obs.bbox:
@@ -178,14 +320,21 @@ class CameraSensor(BaseSensor):
             cy = int(obs.position['y'] * self.height)
 
             color = (0, 255, 120) if obs.activity != "POSSIBLE_FALL" else (0, 0, 255)
+            if obs.activity == "SITTING":
+                color = (255, 165, 0) # Sky blue in BGR
 
-            # Draw HUD bounding box
+            # Draw HUD bounding box & centroid
             cv2.rectangle(preview, (x, y), (x + w, y + h), color, 2)
-            cv2.circle(preview, (cx, cy), 5, (255, 255, 255), -1)
+            cv2.circle(preview, (cx, cy), 6, (255, 255, 255), -1)
+            cv2.circle(preview, (cx, cy), 8, color, 1)
 
-            # Draw HUD tag
-            label = f"{obs.person_id} [{obs.activity}]"
+            # Draw HUD posture tag
+            label = f"ID: {obs.person_id} [{obs.activity}]"
             cv2.putText(preview, label, (x, max(20, y - 8)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+
+        # Draw timestamp and camera index in corner
+        hud_info = f"CAM {self.camera_index} ({self.width}x{self.height} @ {self.fps}fps)"
+        cv2.putText(preview, hud_info, (10, self.height - 12), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (160, 160, 160), 1)
 
         ret, buffer = cv2.imencode('.jpg', preview, [int(cv2.IMWRITE_JPEG_QUALITY), 65])
         if ret:
@@ -196,7 +345,7 @@ class CameraSensor(BaseSensor):
         if self.cap and self.cap.isOpened():
             self.cap.release()
         self.is_connected = False
-        print("[CameraSensor] Released camera device")
+        print(f"[CameraSensor] Released camera device index {self.camera_index}")
 
 
 class MmWaveSensor(BaseSensor):

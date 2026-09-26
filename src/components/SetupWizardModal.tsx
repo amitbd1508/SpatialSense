@@ -124,19 +124,35 @@ export const SetupWizardModal: React.FC<SetupWizardModalProps> = ({
 
           {/* Step 2: Preview Camera */}
           {step === 2 && (
-            <div className="space-y-4 text-center">
-              <div className="w-12 h-12 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center mx-auto">
-                <Radio className="w-6 h-6" />
-              </div>
+            <div className="space-y-3 text-center">
               <div>
-                <h4 className="text-sm font-semibold text-neutral-100">Step 2: Stream Calibration</h4>
+                <h4 className="text-sm font-semibold text-neutral-100">Step 2: USB Camera Calibration & Live View</h4>
                 <p className="text-xs text-neutral-400 mt-1">
-                  Ensure the room coverage encompasses key entry points and desk/seating areas.
+                  Verify camera alignment and live spatial bounding box detection.
                 </p>
               </div>
-              <div className="aspect-16/9 max-w-sm mx-auto bg-neutral-950 rounded-lg border border-neutral-800 flex items-center justify-center text-xs text-neutral-400">
-                <span>Viewport Calibrated (640x480 @ 10 FPS)</span>
+              <div className="aspect-16/9 max-w-md mx-auto bg-black rounded-lg border border-neutral-800 relative overflow-hidden flex items-center justify-center">
+                <img
+                  src="/api/camera/stream"
+                  alt="Live Camera Calibration"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    // fallback text if edge camera stream is not running
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+                <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none p-4 text-center">
+                  <span className="text-[11px] text-neutral-400 font-mono">
+                    Edge Stream Port 8000 · Calibration Active
+                  </span>
+                </div>
+                <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-emerald-600 text-[10px] font-bold text-white shadow">
+                  LIVE CALIBRATION
+                </div>
               </div>
+              <p className="text-[11px] text-neutral-500">
+                You can fine-tune camera resolution, orientation, and privacy filters anytime in Settings.
+              </p>
             </div>
           )}
 

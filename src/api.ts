@@ -5,6 +5,8 @@ import {
   DailyStatistics,
   RoomStatus,
   StandardObservation,
+  CameraDevice,
+  CameraConfig,
 } from './types/index.ts';
 
 const API_BASE = '/api';
@@ -139,6 +141,48 @@ export const api = {
       const err = await res.json();
       throw new Error(err.error || 'Failed to generate summary');
     }
+    return res.json();
+  },
+
+  async getCameraDevices(): Promise<{
+    devices: CameraDevice[];
+    active_index: number;
+    is_connected: boolean;
+    active_resolution: string;
+    active_fps: number;
+  }> {
+    const res = await fetch(`${API_BASE}/camera/devices`);
+    if (!res.ok) throw new Error('Failed to fetch camera devices');
+    return res.json();
+  },
+
+  async getCameraConfig(): Promise<CameraConfig> {
+    const res = await fetch(`${API_BASE}/camera/config`);
+    if (!res.ok) throw new Error('Failed to fetch camera config');
+    return res.json();
+  },
+
+  async updateCameraConfig(config: Partial<CameraConfig>): Promise<any> {
+    const res = await fetch(`${API_BASE}/camera/config`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(config),
+    });
+    if (!res.ok) throw new Error('Failed to update camera config');
+    return res.json();
+  },
+
+  async testCameraDevice(cameraIndex: number): Promise<{
+    can_open: boolean;
+    has_frame: boolean;
+    status: string;
+  }> {
+    const res = await fetch(`${API_BASE}/camera/test`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ camera_index: cameraIndex }),
+    });
+    if (!res.ok) throw new Error('Failed to test camera device');
     return res.json();
   },
 };

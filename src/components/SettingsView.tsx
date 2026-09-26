@@ -8,18 +8,22 @@ import {
   Cpu,
   Terminal,
   Save,
+  Camera,
 } from 'lucide-react';
-import { RoomSettings } from '../types/index.ts';
+import { RoomSettings, RoomStatus } from '../types/index.ts';
 import { api } from '../api.ts';
+import { UsbCameraSetup } from './UsbCameraSetup.tsx';
 
 interface SettingsViewProps {
   settings: RoomSettings | null;
   onSettingsSaved: (updated: RoomSettings) => void;
+  status?: RoomStatus | null;
 }
 
 export const SettingsView: React.FC<SettingsViewProps> = ({
   settings,
   onSettingsSaved,
+  status = null,
 }) => {
   const [formData, setFormData] = useState<Partial<RoomSettings>>(settings || {});
   const [saving, setSaving] = useState<boolean>(false);
@@ -41,7 +45,14 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
   };
 
   return (
-    <div className="space-y-6 max-w-4xl">
+    <div className="space-y-6 max-w-5xl">
+      {/* 1. Dedicated USB Camera Selection, Setup & Live Data Feed */}
+      <UsbCameraSetup
+        settings={settings}
+        onSettingsSaved={onSettingsSaved}
+        status={status}
+      />
+
       <form onSubmit={handleSave} className="space-y-6">
         {/* General Room & Detection Settings */}
         <div className="bg-neutral-900 border border-neutral-800 rounded-xl p-6 space-y-4">

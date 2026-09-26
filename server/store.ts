@@ -31,6 +31,19 @@ const DEFAULT_SETTINGS: RoomSettings = {
   privacyMode: 'silhouette_only',
   demoMode: true,
   activeSensor: 'simulation',
+  cameraConfig: {
+    cameraIndex: 0,
+    devicePath: '/dev/video0',
+    width: 640,
+    height: 480,
+    fps: 10,
+    rotation: 0,
+    flipHorizontal: false,
+    brightness: 0,
+    contrast: 1.0,
+    privacyMode: 'silhouette_only',
+    motionThreshold: 1200,
+  },
 };
 
 const DEFAULT_ZONES: Zone[] = [

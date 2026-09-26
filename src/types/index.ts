@@ -81,6 +81,28 @@ export interface DailyStatistics {
   zoneUsageSeconds: Record<string, number>;
 }
 
+export interface CameraDevice {
+  index: number;
+  devicePath: string; // e.g. /dev/video0
+  name: string; // e.g. "USB 2.0 HD Webcam", "Logitech C920"
+  availableResolutions: string[];
+  isAvailable: boolean;
+}
+
+export interface CameraConfig {
+  cameraIndex: number;
+  devicePath?: string;
+  width: number;
+  height: number;
+  fps: number;
+  rotation: 0 | 90 | 180 | 270;
+  flipHorizontal: boolean;
+  brightness: number; // -100 to 100
+  contrast: number; // 0.5 to 2.0
+  privacyMode: 'silhouette_only' | 'bounding_box_only' | 'wireframe_only' | 'full_vision';
+  motionThreshold: number; // 200 - 5000
+}
+
 export interface RoomSettings {
   roomName: string;
   cameraIndex: number;
@@ -88,9 +110,10 @@ export interface RoomSettings {
   detectionConfidence: number;
   inactivityThresholdMinutes: number;
   fallSensitivity: number; // 0.1 - 1.0
-  privacyMode: 'silhouette_only' | 'bounding_box_only' | 'wireframe';
+  privacyMode: 'silhouette_only' | 'bounding_box_only' | 'wireframe' | 'wireframe_only' | 'full_vision';
   demoMode: boolean;
   activeSensor: 'camera' | 'mmwave' | 'simulation';
+  cameraConfig?: CameraConfig;
 }
 
 export interface RoomStatus {

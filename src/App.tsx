@@ -190,7 +190,11 @@ export default function App() {
           )}
 
           {currentTab === 'settings' && (
-            <SettingsView settings={settings} onSettingsSaved={setSettings} />
+            <SettingsView
+              settings={settings}
+              onSettingsSaved={setSettings}
+              status={status}
+            />
           )}
         </main>
       </div>

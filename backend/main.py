@@ -684,14 +684,99 @@ def get_health():
         "cloud_video_stream": False
     }
 
+class CameraConfigRequest(BaseModel):
+    camera_index: Optional[int] = 0
+    device_path: Optional[str] = None
+    width: Optional[int] = 640
+    height: Optional[int] = 480
+    fps: Optional[int] = 10
+    rotation: Optional[int] = 0
+    flip_h: Optional[bool] = False
+    brightness: Optional[int] = 0
+    contrast: Optional[float] = 1.0
+    privacy_mode: Optional[str] = "silhouette_only"
+    motion_threshold: Optional[int] = 1200
+
 @app.get("/api/camera/devices")
 def list_camera_devices():
     """Returns detected video devices under /dev/video* on Raspberry Pi."""
-    devices = []
-    v4l_paths = sorted(glob.glob("/dev/video*"))
-    for p in v4l_paths:
-        devices.append({"device": p, "name": f"V4L2 Device {p}"})
-    return {"devices": devices, "active_index": camera_sensor.camera_index}
+    devices = CameraSensor.list_available_cameras()
+    return {
+        "devices": devices,
+        "active_index": camera_sensor.camera_index,
+        "is_connected": camera_sensor.is_connected,
+        "active_resolution": f"{camera_sensor.width}x{camera_sensor.height}",
+        "active_fps": camera_sensor.fps
+    }
+
+@app.get("/api/camera/config")
+def get_camera_config():
+    """Returns current edge camera configuration."""
+    return {
+        "camera_index": camera_sensor.camera_index,
+        "width": camera_sensor.width,
+        "height": camera_sensor.height,
+        "fps": camera_sensor.fps,
+        "rotation": camera_sensor.rotation,
+        "flip_h": camera_sensor.flip_h,
+        "brightness": camera_sensor.brightness,
+        "contrast": camera_sensor.contrast,
+        "privacy_mode": camera_sensor.privacy_mode,
+        "motion_threshold": camera_sensor.motion_threshold,
+        "is_connected": camera_sensor.is_connected,
+        "device_name": camera_sensor.device_name
+    }
+
+@app.post("/api/camera/config")
+def update_camera_config(req: CameraConfigRequest):
+    """Dynamically applies new camera index, resolution, orientation, and privacy filters."""
+    success = camera_sensor.reconfigure(
+        camera_index=req.camera_index,
+        width=req.width,
+        height=req.height,
+        fps=req.fps,
+        rotation=req.rotation,
+        flip_h=req.flip_h,
+        brightness=req.brightness,
+        contrast=req.contrast,
+        privacy_mode=req.privacy_mode,
+        motion_threshold=req.motion_threshold
+    )
+    return {
+        "success": success,
+        "is_connected": camera_sensor.is_connected,
+        "camera_index": camera_sensor.camera_index,
+        "width": camera_sensor.width,
+        "height": camera_sensor.height,
+        "fps": camera_sensor.fps,
+        "rotation": camera_sensor.rotation,
+        "flip_h": camera_sensor.flip_h,
+        "privacy_mode": camera_sensor.privacy_mode
+    }
+
+@app.post("/api/camera/test")
+def test_camera_device(req: CameraConfigRequest):
+    """Probes a specific camera index to verify frame acquisition."""
+    test_idx = req.camera_index if req.camera_index is not None else 0
+    import cv2
+    test_cap = cv2.VideoCapture(test_idx, cv2.CAP_V4L2)
+    if not test_cap.isOpened():
+        test_cap = cv2.VideoCapture(test_idx)
+    
+    can_open = test_cap.isOpened()
+    has_frame = False
+    if can_open:
+        ret, frame = test_cap.read()
+        has_frame = ret and frame is not None
+        test_cap.release()
+
+    return {
+        "camera_index": test_idx,
+        "device_path": f"/dev/video{test_idx}",
+        "can_open": can_open,
+        "has_frame": has_frame,
+        "status": "ready" if (can_open and has_frame) else "unresponsive"
+    }
 
 @app.get("/api/camera/stream")
 def get_camera_stream():
