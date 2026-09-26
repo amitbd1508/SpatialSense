@@ -1,0 +1,9 @@
+{
+  "name": "SpatialSense - Privacy-First Spatial Intelligence",
+  "description": "Privacy-first indoor spatial intelligence, room activity tracking, and fall detection platform for Raspberry Pi and browser cameras.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
