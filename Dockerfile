@@ -19,9 +19,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# 2. Install Node.js frontend and Express dependencies
-COPY package*.json .npmrc* ./
-RUN npm install --legacy-peer-deps
+# 2. Install Node.js frontend and Express dependencies (including native ARM64/x86 optional bindings)
+COPY package.json .npmrc* ./
+RUN npm install --include=optional
 
 # 3. Install Python Computer Vision & Edge dependencies
 COPY backend/requirements.txt ./backend/requirements.txt
@@ -32,7 +32,7 @@ COPY . .
 
 # 5. Build static React production bundle
 ENV NODE_OPTIONS="--max-old-space-size=2048"
-RUN npm run build || (echo "Skipping live build, using pre-built dist" && test -d dist)
+RUN npm run build
 
 # Make entrypoint script executable
 RUN chmod +x entrypoint.sh

@@ -1,0 +1,7 @@
+node_modules
+package-lock.json
+bun.lock
+.git
+.env
+__pycache__
+*.pyc
