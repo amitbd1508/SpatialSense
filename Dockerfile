@@ -20,8 +20,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # 2. Install Node.js frontend and Express dependencies
-COPY package*.json ./
-RUN npm install
+COPY package*.json .npmrc* ./
+RUN npm install --legacy-peer-deps
 
 # 3. Install Python Computer Vision & Edge dependencies
 COPY backend/requirements.txt ./backend/requirements.txt
