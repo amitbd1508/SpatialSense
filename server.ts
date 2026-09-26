@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import { createServer as createViteServer } from 'vite';
 import path from 'path';
+import http from 'http';
 import dotenv from 'dotenv';
 import { GoogleGenAI } from '@google/genai';
 import { store } from './server/store.ts';
@@ -167,6 +168,20 @@ app.get('/api/heatmap', (req: Request, res: Response) => {
 });
 
 // 6. Live Feed & Ingestion (Privacy-Preserving Observations)
+app.get('/api/camera/stream', (_req: Request, res: Response) => {
+  const proxyReq = http.request(
+    'http://127.0.0.1:8000/api/camera/stream',
+    (proxyRes) => {
+      res.writeHead(proxyRes.statusCode || 200, proxyRes.headers);
+      proxyRes.pipe(res);
+    }
+  );
+  proxyReq.on('error', () => {
+    res.status(503).json({ error: 'Edge camera server not reachable at http://127.0.0.1:8000' });
+  });
+  proxyReq.end();
+});
+
 app.get('/api/live', (_req: Request, res: Response) => {
   const status = store.getStatus();
   const zones = store.getZones();

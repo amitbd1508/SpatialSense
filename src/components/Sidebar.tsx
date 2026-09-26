@@ -9,6 +9,8 @@ import {
   Settings,
   ShieldCheck,
   Sparkles,
+  Eye,
+  EyeOff,
 } from 'lucide-react';
 import { RoomStatus } from '../types/index.ts';
 
@@ -26,6 +28,8 @@ interface SidebarProps {
   onSelectTab: (tab: NavTab) => void;
   status: RoomStatus | null;
   onOpenWizard: () => void;
+  isMiniViewOpen?: boolean;
+  onToggleMiniView?: (open: boolean) => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
@@ -33,6 +37,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onSelectTab,
   status,
   onOpenWizard,
+  isMiniViewOpen,
+  onToggleMiniView,
 }) => {
   const navItems = [
     { id: 'dashboard' as NavTab, label: 'Dashboard', icon: LayoutDashboard },
@@ -105,6 +111,38 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </button>
           );
         })}
+
+        {/* Quick Mini Live Window Toggle in Sidebar */}
+        {onToggleMiniView && (
+          <div className="pt-2 border-t border-neutral-800/60 mt-2">
+            <button
+              onClick={() => onToggleMiniView(!isMiniViewOpen)}
+              className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-colors border ${
+                isMiniViewOpen
+                  ? 'bg-emerald-950/40 border-emerald-500/40 text-emerald-300'
+                  : 'border-neutral-800/80 text-neutral-400 hover:text-neutral-200 hover:bg-neutral-800/40'
+              }`}
+            >
+              <div className="flex items-center gap-2">
+                {isMiniViewOpen ? (
+                  <Eye className="w-3.5 h-3.5 text-emerald-400" />
+                ) : (
+                  <EyeOff className="w-3.5 h-3.5 text-neutral-400" />
+                )}
+                <span>Mini Live View</span>
+              </div>
+              <span
+                className={`text-[9px] font-mono px-1.5 py-0.5 rounded font-bold ${
+                  isMiniViewOpen
+                    ? 'bg-emerald-500 text-neutral-950'
+                    : 'bg-neutral-800 text-neutral-400'
+                }`}
+              >
+                {isMiniViewOpen ? 'ON' : 'OFF'}
+              </span>
+            </button>
+          </div>
+        )}
       </nav>
 
       {/* Setup Wizard Trigger & Privacy Badge */}

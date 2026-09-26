@@ -1,5 +1,5 @@
 import React from 'react';
-import { AlertTriangle, Check, ShieldAlert } from 'lucide-react';
+import { AlertTriangle, Check, ShieldAlert, Eye, EyeOff } from 'lucide-react';
 import { RoomStatus, ActivityEvent } from '../types/index.ts';
 import { NavTab } from './Sidebar.tsx';
 
@@ -9,6 +9,8 @@ interface TopBarProps {
   onSimulateFall: () => void;
   onAcknowledgeAlert: (id: string) => void;
   isSimulating: boolean;
+  isMiniViewOpen?: boolean;
+  onToggleMiniView?: (open: boolean) => void;
 }
 
 export const TopBar: React.FC<TopBarProps> = ({
@@ -17,6 +19,8 @@ export const TopBar: React.FC<TopBarProps> = ({
   onSimulateFall,
   onAcknowledgeAlert,
   isSimulating,
+  isMiniViewOpen = false,
+  onToggleMiniView,
 }) => {
   const tabTitles: Record<NavTab, { title: string; subtitle: string }> = {
     dashboard: {
@@ -119,6 +123,35 @@ export const TopBar: React.FC<TopBarProps> = ({
               Edge Active
             </span>
           </div>
+
+          {/* Mini Live View Window Toggle */}
+          {onToggleMiniView && (
+            <button
+              onClick={() => onToggleMiniView(!isMiniViewOpen)}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
+                isMiniViewOpen
+                  ? 'bg-emerald-500/15 border-emerald-500/50 text-emerald-300 shadow-sm shadow-emerald-950'
+                  : 'bg-neutral-800/80 border-neutral-700 text-neutral-300 hover:text-neutral-100 hover:border-neutral-600'
+              }`}
+              title="Toggle low-resolution live camera window in corner of screen"
+            >
+              {isMiniViewOpen ? (
+                <Eye className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
+              ) : (
+                <EyeOff className="w-3.5 h-3.5 text-neutral-400" />
+              )}
+              <span>Live View</span>
+              <span
+                className={`text-[10px] px-1.5 py-0.2 rounded font-mono font-semibold transition-colors ${
+                  isMiniViewOpen
+                    ? 'bg-emerald-500/30 text-emerald-300'
+                    : 'bg-neutral-700 text-neutral-400'
+                }`}
+              >
+                {isMiniViewOpen ? 'ON' : 'OFF'}
+              </span>
+            </button>
+          )}
 
           {/* Test Fall Trigger */}
           <button

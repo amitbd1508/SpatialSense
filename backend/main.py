@@ -380,11 +380,41 @@ def root_view():
                     <div class="brand-sub">Raspberry Pi Optical Activity & Fall Monitor</div>
                 </div>
             </div>
-            <div class="status-pill">
-                <div class="pulse-dot"></div>
-                <span id="header-status">Edge Engine Active · Zero Video Upload</span>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <button id="pip-toggle-btn" class="btn" onclick="togglePipWindow()" style="font-size: 12px; padding: 6px 12px; display: flex; align-items: center; gap: 8px;">
+                    <span>📹 Low-Res Live View</span>
+                    <span id="pip-state" style="background: #27272a; color: #a1a1aa; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 10px; font-weight: 700;">OFF</span>
+                </button>
+                <div class="status-pill">
+                    <div class="pulse-dot"></div>
+                    <span id="header-status">Edge Engine Active</span>
+                </div>
             </div>
         </header>
+
+        <!-- Floating Low-Res Small Live View Window -->
+        <div id="floating-pip-window" style="display: none; position: fixed; bottom: 20px; right: 20px; width: 240px; background: #121215; border: 1px solid #27272a; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); z-index: 9999; overflow: hidden; backdrop-filter: blur(8px);">
+            <div style="padding: 6px 10px; background: #09090b; border-bottom: 1px solid #27272a; display: flex; align-items: center; justify-content: space-between; font-size: 11px; font-weight: 600;">
+                <div style="display: flex; align-items: center; gap: 6px;">
+                    <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #10b981;"></span>
+                    <span>Low-Res Live (160p)</span>
+                </div>
+                <button onclick="togglePipWindow()" style="background: none; border: none; color: #a1a1aa; cursor: pointer; font-size: 14px; line-height: 1;">✕</button>
+            </div>
+            <div style="position: relative; width: 240px; height: 160px; background: #000; display: flex; align-items: center; justify-content: center;">
+                <img src="/api/camera/stream" style="width: 100%; height: 100%; object-fit: cover;" alt="Low Res Feed" />
+                <div id="pip-posture-badge" style="position: absolute; top: 6px; left: 6px; font-size: 9px; font-weight: 700; background: rgba(16, 185, 129, 0.9); color: #fff; padding: 2px 6px; border-radius: 4px;">
+                    STANDING
+                </div>
+                <div id="pip-coords" style="position: absolute; bottom: 6px; right: 6px; font-size: 8px; font-family: monospace; background: rgba(0,0,0,0.7); color: #e2e8f0; padding: 2px 4px; border-radius: 3px;">
+                    0.50, 0.50
+                </div>
+            </div>
+            <div style="padding: 6px 10px; font-size: 10px; color: #a1a1aa; display: flex; justify-content: space-between; background: #09090b; border-top: 1px solid #1e1e24;">
+                <span id="pip-zone-tag">Work Desk</span>
+                <span style="color: #38bdf8;">Edge Privacy Shield</span>
+            </div>
+        </div>
 
         <main>
             <!-- Dynamic Alert Banner if fall detected -->
@@ -573,8 +603,41 @@ def root_view():
                         `;
                         list.prepend(item);
                     }
+                    // Update floating PiP elements if active
+                    const pipBadge = document.getElementById('pip-posture-badge');
+                    if (pipBadge) {
+                        pipBadge.innerText = data.currentActivity || 'STAND';
+                        pipBadge.style.background = data.currentActivity === 'POSSIBLE_FALL' ? '#ef4444' : (data.currentActivity === 'SITTING' ? '#0ea5e9' : '#10b981');
+                    }
+                    if (data.position && document.getElementById('pip-coords')) {
+                        document.getElementById('pip-coords').innerText = `${data.position.x.toFixed(2)}, ${data.position.y.toFixed(2)}`;
+                    }
+                    if (document.getElementById('pip-zone-tag')) {
+                        document.getElementById('pip-zone-tag').innerText = data.currentZone?.name || 'Room Space';
+                    }
                 } catch (e) {
                     console.warn('Dashboard poll error:', e);
+                }
+            }
+
+            let pipOpen = false;
+            function togglePipWindow() {
+                pipOpen = !pipOpen;
+                const win = document.getElementById('floating-pip-window');
+                const state = document.getElementById('pip-state');
+                const btn = document.getElementById('pip-toggle-btn');
+                if (pipOpen) {
+                    win.style.display = 'block';
+                    state.innerText = 'ON';
+                    state.style.background = '#10b981';
+                    state.style.color = '#000';
+                    btn.style.borderColor = '#10b981';
+                } else {
+                    win.style.display = 'none';
+                    state.innerText = 'OFF';
+                    state.style.background = '#27272a';
+                    state.style.color = '#a1a1aa';
+                    btn.style.borderColor = '';
                 }
             }
 

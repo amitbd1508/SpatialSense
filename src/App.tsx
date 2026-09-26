@@ -9,6 +9,7 @@ import { EventsView } from './components/EventsView.tsx';
 import { ZonesView } from './components/ZonesView.tsx';
 import { SettingsView } from './components/SettingsView.tsx';
 import { SetupWizardModal } from './components/SetupWizardModal.tsx';
+import { MiniLiveView } from './components/MiniLiveView.tsx';
 import {
   RoomStatus,
   DailyStatistics,
@@ -27,6 +28,21 @@ export default function App() {
   const [settings, setSettings] = useState<RoomSettings | null>(null);
   const [isWizardOpen, setIsWizardOpen] = useState<boolean>(false);
   const [isSimulatingFall, setIsSimulatingFall] = useState<boolean>(false);
+  const [isMiniViewOpen, setIsMiniViewOpen] = useState<boolean>(() => {
+    try {
+      const stored = localStorage.getItem('spatialsense_mini_view');
+      return stored === 'true';
+    } catch {
+      return false;
+    }
+  });
+
+  const handleToggleMiniView = (open: boolean) => {
+    setIsMiniViewOpen(open);
+    try {
+      localStorage.setItem('spatialsense_mini_view', open ? 'true' : 'false');
+    } catch {}
+  };
 
   // Initial load
   const loadInitialData = async () => {
@@ -125,6 +141,8 @@ export default function App() {
         onSelectTab={setCurrentTab}
         status={status}
         onOpenWizard={() => setIsWizardOpen(true)}
+        isMiniViewOpen={isMiniViewOpen}
+        onToggleMiniView={handleToggleMiniView}
       />
 
       {/* Main Content Area */}
@@ -135,6 +153,8 @@ export default function App() {
           onSimulateFall={handleSimulateFall}
           onAcknowledgeAlert={handleAcknowledgeAlert}
           isSimulating={isSimulatingFall}
+          isMiniViewOpen={isMiniViewOpen}
+          onToggleMiniView={handleToggleMiniView}
         />
 
         <main className="flex-1 overflow-y-auto p-6 max-w-7xl w-full mx-auto">
@@ -182,6 +202,14 @@ export default function App() {
         onComplete={loadInitialData}
         zones={zones}
         settings={settings}
+      />
+
+      {/* Persistent Floating Low-Res Mini Live View Window */}
+      <MiniLiveView
+        isOpen={isMiniViewOpen}
+        onToggle={handleToggleMiniView}
+        status={status}
+        zones={zones}
       />
     </div>
   );
