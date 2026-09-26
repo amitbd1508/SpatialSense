@@ -49,7 +49,30 @@ SpatialSense transforms standard edge hardware (Raspberry Pi 4 / 5 + webcam) int
 
 ---
 
-## Quick Start on Raspberry Pi
+## Quick Start (Docker — Recommended)
+
+Run everything (OpenCV Edge CV Engine + Web Dashboard + USB Camera) in **one command**:
+
+```bash
+# Clone and enter directory
+cd spatialsense
+
+# Run with 1 command (builds & starts containers with USB camera pass-through)
+./run_docker.sh
+```
+
+Or using Docker Compose directly:
+```bash
+docker compose up --build -d
+```
+
+Once started:
+* **Web Dashboard**: `http://localhost:3000` (or `http://<YOUR_PI_IP>:3000`)
+* **Camera Stream & Edge CV**: `http://localhost:8000` (or `http://<YOUR_PI_IP>:8000`)
+
+---
+
+## Native Setup on Raspberry Pi (Without Docker)
 
 1. Clone or copy project to Raspberry Pi:
    ```bash

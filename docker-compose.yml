@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  spatialsense:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: spatialsense:latest
+    container_name: spatialsense
+    restart: unless-stopped
+    ports:
+      - "3000:3000"   # Full React Web Dashboard
+      - "8000:8000"   # Python OpenCV Edge CV & MJPEG Stream
+    privileged: true  # Grants access to USB camera (/dev/video*) and hardware acceleration
+    volumes:
+      - /dev:/dev     # Allows USB camera hotplugging
+      - ./data:/app/data # Persistent storage for zones, activity metrics & timeline events
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
