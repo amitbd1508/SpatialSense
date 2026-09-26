@@ -1907,6 +1907,384 @@
       "timestamp": "2026-09-26T06:12:54.039Z",
       "confidence": 0.94,
       "acknowledged": false
+    },
+    {
+      "id": "evt-1790403216381-459",
+      "session_id": "sess-1790403216381",
+      "tracking_id": "person_001",
+      "event_type": "PERSON_ENTERED",
+      "zone_id": "zone-chair",
+      "zone_name": "Ergo Chair",
+      "timestamp": "2026-09-26T06:13:36.381Z",
+      "confidence": 0.94,
+      "metadata": {
+        "initial_position": {
+          "x": 0.7198519450625984,
+          "y": 0.33527519484152934
+        }
+      },
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403216383-773",
+      "session_id": "sess-1790403216381",
+      "tracking_id": "person_001",
+      "event_type": "SITTING_STARTED",
+      "zone_id": "zone-chair",
+      "zone_name": "Ergo Chair",
+      "timestamp": "2026-09-26T06:13:36.381Z",
+      "confidence": 0.94,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403251404-717",
+      "session_id": "sess-1790403216381",
+      "tracking_id": "person_001",
+      "event_type": "SITTING_ENDED",
+      "zone_id": "zone-chair",
+      "zone_name": "Ergo Chair",
+      "timestamp": "2026-09-26T06:14:11.403Z",
+      "duration": 35,
+      "confidence": 0.91,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403251408-754",
+      "session_id": "sess-1790403216381",
+      "tracking_id": "person_001",
+      "event_type": "STANDING_STARTED",
+      "zone_id": "zone-chair",
+      "zone_name": "Ergo Chair",
+      "timestamp": "2026-09-26T06:14:11.403Z",
+      "confidence": 0.94,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403255407-381",
+      "session_id": "sess-1790403216381",
+      "tracking_id": "person_001",
+      "event_type": "ZONE_LEFT",
+      "zone_id": "zone-chair",
+      "zone_name": "Ergo Chair",
+      "timestamp": "2026-09-26T06:14:15.407Z",
+      "confidence": 0.92,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403255409-83",
+      "session_id": "sess-1790403216381",
+      "tracking_id": "person_001",
+      "event_type": "WALKING_STARTED",
+      "zone_id": null,
+      "zone_name": null,
+      "timestamp": "2026-09-26T06:14:15.407Z",
+      "confidence": 0.94,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403259407-336",
+      "session_id": "sess-1790403216381",
+      "tracking_id": "person_001",
+      "event_type": "ZONE_ENTERED",
+      "zone_id": "zone-lounge",
+      "zone_name": "Rest Couch",
+      "timestamp": "2026-09-26T06:14:19.407Z",
+      "confidence": 0.94,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403259410-204",
+      "session_id": "sess-1790403216381",
+      "tracking_id": "person_001",
+      "event_type": "WALKING_ENDED",
+      "zone_id": "zone-lounge",
+      "zone_name": "Rest Couch",
+      "timestamp": "2026-09-26T06:14:19.407Z",
+      "duration": 4,
+      "confidence": 0.88,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403259412-705",
+      "session_id": "sess-1790403216381",
+      "tracking_id": "person_001",
+      "event_type": "SITTING_STARTED",
+      "zone_id": "zone-lounge",
+      "zone_name": "Rest Couch",
+      "timestamp": "2026-09-26T06:14:19.407Z",
+      "confidence": 0.94,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403277423-830",
+      "session_id": "sess-1790403216381",
+      "tracking_id": "person_001",
+      "event_type": "SITTING_ENDED",
+      "zone_id": "zone-lounge",
+      "zone_name": "Rest Couch",
+      "timestamp": "2026-09-26T06:14:37.423Z",
+      "duration": 18,
+      "confidence": 0.91,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403277428-986",
+      "session_id": "sess-1790403216381",
+      "tracking_id": "person_001",
+      "event_type": "WALKING_STARTED",
+      "zone_id": "zone-lounge",
+      "zone_name": "Rest Couch",
+      "timestamp": "2026-09-26T06:14:37.423Z",
+      "confidence": 0.94,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403281428-256",
+      "session_id": "sess-1790403216381",
+      "tracking_id": "person_001",
+      "event_type": "ZONE_LEFT",
+      "zone_id": "zone-lounge",
+      "zone_name": "Rest Couch",
+      "timestamp": "2026-09-26T06:14:41.428Z",
+      "confidence": 0.92,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403281430-55",
+      "session_id": "sess-1790403216381",
+      "tracking_id": "person_001",
+      "event_type": "ZONE_ENTERED",
+      "zone_id": "zone-chair",
+      "zone_name": "Ergo Chair",
+      "timestamp": "2026-09-26T06:14:41.428Z",
+      "confidence": 0.94,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403281432-173",
+      "session_id": "sess-1790403216381",
+      "tracking_id": "person_001",
+      "event_type": "WALKING_ENDED",
+      "zone_id": "zone-chair",
+      "zone_name": "Ergo Chair",
+      "timestamp": "2026-09-26T06:14:41.428Z",
+      "duration": 4,
+      "confidence": 0.88,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403281434-256",
+      "session_id": "sess-1790403216381",
+      "tracking_id": "person_001",
+      "event_type": "SITTING_STARTED",
+      "zone_id": "zone-chair",
+      "zone_name": "Ergo Chair",
+      "timestamp": "2026-09-26T06:14:41.428Z",
+      "confidence": 0.94,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403321455-543",
+      "session_id": "sess-1790403216381",
+      "tracking_id": "person_001",
+      "event_type": "ZONE_LEFT",
+      "zone_id": "zone-chair",
+      "zone_name": "Ergo Chair",
+      "timestamp": "2026-09-26T06:15:21.455Z",
+      "confidence": 0.92,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403321457-446",
+      "session_id": "sess-1790403216381",
+      "tracking_id": "person_001",
+      "event_type": "ZONE_ENTERED",
+      "zone_id": "zone-door",
+      "zone_name": "Entry Door",
+      "timestamp": "2026-09-26T06:15:21.455Z",
+      "confidence": 0.94,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403321460-447",
+      "session_id": "sess-1790403216381",
+      "tracking_id": "person_001",
+      "event_type": "SITTING_ENDED",
+      "zone_id": "zone-door",
+      "zone_name": "Entry Door",
+      "timestamp": "2026-09-26T06:15:21.455Z",
+      "duration": 40,
+      "confidence": 0.91,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403321464-74",
+      "session_id": "sess-1790403216381",
+      "tracking_id": "person_001",
+      "event_type": "WALKING_STARTED",
+      "zone_id": "zone-door",
+      "zone_name": "Entry Door",
+      "timestamp": "2026-09-26T06:15:21.455Z",
+      "confidence": 0.94,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403325457-885",
+      "session_id": "sess-1790403216381",
+      "tracking_id": "person_001",
+      "event_type": "ZONE_LEFT",
+      "zone_id": "zone-door",
+      "zone_name": "Entry Door",
+      "timestamp": "2026-09-26T06:15:25.457Z",
+      "confidence": 0.92,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403332462-473",
+      "session_id": "sess-1790403216381",
+      "tracking_id": "person_001",
+      "event_type": "ZONE_ENTERED",
+      "zone_id": "zone-chair",
+      "zone_name": "Ergo Chair",
+      "timestamp": "2026-09-26T06:15:32.462Z",
+      "confidence": 0.94,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403332464-334",
+      "session_id": "sess-1790403216381",
+      "tracking_id": "person_001",
+      "event_type": "WALKING_ENDED",
+      "zone_id": "zone-chair",
+      "zone_name": "Ergo Chair",
+      "timestamp": "2026-09-26T06:15:32.462Z",
+      "duration": 11,
+      "confidence": 0.88,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403332466-377",
+      "session_id": "sess-1790403216381",
+      "tracking_id": "person_001",
+      "event_type": "STANDING_STARTED",
+      "zone_id": "zone-chair",
+      "zone_name": "Ergo Chair",
+      "timestamp": "2026-09-26T06:15:32.462Z",
+      "confidence": 0.94,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403337468-983",
+      "session_id": "sess-1790403216381",
+      "tracking_id": "person_001",
+      "event_type": "SITTING_STARTED",
+      "zone_id": "zone-chair",
+      "zone_name": "Ergo Chair",
+      "timestamp": "2026-09-26T06:15:37.468Z",
+      "confidence": 0.94,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403372494-812",
+      "session_id": "sess-1790403216381",
+      "tracking_id": "person_001",
+      "event_type": "SITTING_ENDED",
+      "zone_id": "zone-chair",
+      "zone_name": "Ergo Chair",
+      "timestamp": "2026-09-26T06:16:12.494Z",
+      "duration": 35,
+      "confidence": 0.91,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403372501-344",
+      "session_id": "sess-1790403216381",
+      "tracking_id": "person_001",
+      "event_type": "STANDING_STARTED",
+      "zone_id": "zone-chair",
+      "zone_name": "Ergo Chair",
+      "timestamp": "2026-09-26T06:16:12.494Z",
+      "confidence": 0.94,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403377623-384",
+      "session_id": "sess-1790403377622",
+      "tracking_id": "person_001",
+      "event_type": "PERSON_ENTERED",
+      "zone_id": "zone-chair",
+      "zone_name": "Ergo Chair",
+      "timestamp": "2026-09-26T06:16:17.622Z",
+      "confidence": 0.94,
+      "metadata": {
+        "initial_position": {
+          "x": 0.715764485846263,
+          "y": 0.3401444871523253
+        }
+      },
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403377625-629",
+      "session_id": "sess-1790403377622",
+      "tracking_id": "person_001",
+      "event_type": "SITTING_STARTED",
+      "zone_id": "zone-chair",
+      "zone_name": "Ergo Chair",
+      "timestamp": "2026-09-26T06:16:17.622Z",
+      "confidence": 0.94,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403394779-979",
+      "session_id": "sess-1790403394779",
+      "tracking_id": "person_001",
+      "event_type": "PERSON_ENTERED",
+      "zone_id": "zone-chair",
+      "zone_name": "Ergo Chair",
+      "timestamp": "2026-09-26T06:16:34.778Z",
+      "confidence": 0.94,
+      "metadata": {
+        "initial_position": {
+          "x": 0.7169882279461138,
+          "y": 0.3432157024854465
+        }
+      },
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403394782-190",
+      "session_id": "sess-1790403394779",
+      "tracking_id": "person_001",
+      "event_type": "SITTING_STARTED",
+      "zone_id": "zone-chair",
+      "zone_name": "Ergo Chair",
+      "timestamp": "2026-09-26T06:16:34.778Z",
+      "confidence": 0.94,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403429804-621",
+      "session_id": "sess-1790403394779",
+      "tracking_id": "person_001",
+      "event_type": "SITTING_ENDED",
+      "zone_id": "zone-chair",
+      "zone_name": "Ergo Chair",
+      "timestamp": "2026-09-26T06:17:09.804Z",
+      "duration": 35,
+      "confidence": 0.91,
+      "acknowledged": false
+    },
+    {
+      "id": "evt-1790403429810-788",
+      "session_id": "sess-1790403394779",
+      "tracking_id": "person_001",
+      "event_type": "STANDING_STARTED",
+      "zone_id": "zone-chair",
+      "zone_name": "Ergo Chair",
+      "timestamp": "2026-09-26T06:17:09.804Z",
+      "confidence": 0.94,
+      "acknowledged": false
     }
   ],
   "spatialPoints": [
@@ -9945,15 +10323,1541 @@
       "y": 0.33893525005373587,
       "zone_id": "zone-chair",
       "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:29.059Z",
+      "x": 0.7088910263795475,
+      "y": 0.3368177061893057,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:30.059Z",
+      "x": 0.7049087700051792,
+      "y": 0.3362616373854894,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:31.077Z",
+      "x": 0.7106402793170182,
+      "y": 0.3428657851258486,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:32.077Z",
+      "x": 0.7121375998690921,
+      "y": 0.3423162993890705,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:33.078Z",
+      "x": 0.7148582386709523,
+      "y": 0.33916770442355715,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:36.381Z",
+      "x": 0.7198519450625984,
+      "y": 0.33527519484152934,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:37.381Z",
+      "x": 0.7178487523331967,
+      "y": 0.3361666308294869,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:38.381Z",
+      "x": 0.723003801920723,
+      "y": 0.3353247708516216,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:39.381Z",
+      "x": 0.7167621873397131,
+      "y": 0.3441702756789473,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:40.382Z",
+      "x": 0.7259768115744374,
+      "y": 0.3396034469361536,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:41.382Z",
+      "x": 0.7242308196851529,
+      "y": 0.34366087397089096,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:42.383Z",
+      "x": 0.7215597105610371,
+      "y": 0.3355318894085055,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:43.384Z",
+      "x": 0.7187251351763401,
+      "y": 0.3455347886519917,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:44.385Z",
+      "x": 0.7227808101114749,
+      "y": 0.3409326060338543,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:45.386Z",
+      "x": 0.7170366331217741,
+      "y": 0.3389887925009306,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:46.386Z",
+      "x": 0.7162131514860891,
+      "y": 0.3431106422340344,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:47.387Z",
+      "x": 0.7168655059056085,
+      "y": 0.33833579392922797,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:48.389Z",
+      "x": 0.7237833605217231,
+      "y": 0.34269158488681334,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:49.389Z",
+      "x": 0.7181811778895666,
+      "y": 0.34369447638767897,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:50.390Z",
+      "x": 0.7142077039380402,
+      "y": 0.33988802916818267,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:51.390Z",
+      "x": 0.724082416081222,
+      "y": 0.3444989077454952,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:52.390Z",
+      "x": 0.7213319386198845,
+      "y": 0.34462159008364057,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:53.391Z",
+      "x": 0.7238227095873817,
+      "y": 0.33828184043040266,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:54.392Z",
+      "x": 0.7240414472048233,
+      "y": 0.3340952742960473,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:55.392Z",
+      "x": 0.7252209623793363,
+      "y": 0.3372657456291369,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:56.392Z",
+      "x": 0.7188274251905006,
+      "y": 0.3402755574959343,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:57.392Z",
+      "x": 0.7192603806134724,
+      "y": 0.3456424065392173,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:58.393Z",
+      "x": 0.7190535720195224,
+      "y": 0.34152557353922325,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:13:59.394Z",
+      "x": 0.7177819713721927,
+      "y": 0.3429659714366582,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:00.394Z",
+      "x": 0.7185823667840683,
+      "y": 0.3410209836396495,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:01.395Z",
+      "x": 0.723562175631359,
+      "y": 0.33506139348632824,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:02.396Z",
+      "x": 0.7147644075533854,
+      "y": 0.3355762979795658,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:03.397Z",
+      "x": 0.7219926876170081,
+      "y": 0.3421796576680557,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:04.398Z",
+      "x": 0.723305920257142,
+      "y": 0.33903002311877173,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:05.398Z",
+      "x": 0.7144820103468404,
+      "y": 0.34423034963323795,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:06.399Z",
+      "x": 0.7208348182535931,
+      "y": 0.34568582205513165,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:07.400Z",
+      "x": 0.7240632086890476,
+      "y": 0.3366387459169853,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:08.401Z",
+      "x": 0.7221547025613773,
+      "y": 0.33785587327179856,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:09.401Z",
+      "x": 0.7206050154456889,
+      "y": 0.3437043581996587,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:10.402Z",
+      "x": 0.715560901716167,
+      "y": 0.3366011631705806,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:11.403Z",
+      "x": 0.7018817444932701,
+      "y": 0.36310617165139303,
+      "zone_id": "zone-chair",
+      "activity": "STANDING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:12.404Z",
+      "x": 0.6966996316560211,
+      "y": 0.35953571828442044,
+      "zone_id": "zone-chair",
+      "activity": "STANDING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:13.405Z",
+      "x": 0.705296023485001,
+      "y": 0.3605904751409771,
+      "zone_id": "zone-chair",
+      "activity": "STANDING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:14.406Z",
+      "x": 0.697854474803518,
+      "y": 0.36341655076064155,
+      "zone_id": "zone-chair",
+      "activity": "STANDING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:15.407Z",
+      "x": 0.49473887717597487,
+      "y": 0.30271603273683795,
+      "zone_id": null,
+      "activity": "WALKING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:16.406Z",
+      "x": 0.4966151613181063,
+      "y": 0.3043873972840845,
+      "zone_id": null,
+      "activity": "WALKING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:17.407Z",
+      "x": 0.4955808135936906,
+      "y": 0.2970676799862782,
+      "zone_id": null,
+      "activity": "WALKING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:18.406Z",
+      "x": 0.5005861576886186,
+      "y": 0.3033289991037174,
+      "zone_id": null,
+      "activity": "WALKING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:19.407Z",
+      "x": 0.2589238535904832,
+      "y": 0.23794272419478904,
+      "zone_id": "zone-lounge",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:20.409Z",
+      "x": 0.2590182226963833,
+      "y": 0.24124149838410588,
+      "zone_id": "zone-lounge",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:21.409Z",
+      "x": 0.2552174638390986,
+      "y": 0.23509521472184464,
+      "zone_id": "zone-lounge",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:22.409Z",
+      "x": 0.26213842673914795,
+      "y": 0.24285977415604193,
+      "zone_id": "zone-lounge",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:23.410Z",
+      "x": 0.2613031252062703,
+      "y": 0.23722003753388549,
+      "zone_id": "zone-lounge",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:24.412Z",
+      "x": 0.25566552303534074,
+      "y": 0.24568089811892238,
+      "zone_id": "zone-lounge",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:25.411Z",
+      "x": 0.25895538716208477,
+      "y": 0.2340916007539989,
+      "zone_id": "zone-lounge",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:26.413Z",
+      "x": 0.2569621405719585,
+      "y": 0.23841507965861844,
+      "zone_id": "zone-lounge",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:27.413Z",
+      "x": 0.26486050824091806,
+      "y": 0.2444247656905856,
+      "zone_id": "zone-lounge",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:28.414Z",
+      "x": 0.26181209414912876,
+      "y": 0.24297857348218527,
+      "zone_id": "zone-lounge",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:29.415Z",
+      "x": 0.2594834314762345,
+      "y": 0.2373960278202409,
+      "zone_id": "zone-lounge",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:30.416Z",
+      "x": 0.2545715752576803,
+      "y": 0.2360148571678428,
+      "zone_id": "zone-lounge",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:31.418Z",
+      "x": 0.26297036638248517,
+      "y": 0.24100468397584218,
+      "zone_id": "zone-lounge",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:32.417Z",
+      "x": 0.26174191316460177,
+      "y": 0.24577876538224744,
+      "zone_id": "zone-lounge",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:33.419Z",
+      "x": 0.25843824196282,
+      "y": 0.24046074367448675,
+      "zone_id": "zone-lounge",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:34.420Z",
+      "x": 0.2644662600023984,
+      "y": 0.24255668860728993,
+      "zone_id": "zone-lounge",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:35.422Z",
+      "x": 0.2631515965478296,
+      "y": 0.23491468963509357,
+      "zone_id": "zone-lounge",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:36.422Z",
+      "x": 0.26152603307485905,
+      "y": 0.23553981339091398,
+      "zone_id": "zone-lounge",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:37.423Z",
+      "x": 0.42358344454399877,
+      "y": 0.3851325078112971,
+      "zone_id": "zone-lounge",
+      "activity": "WALKING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:38.425Z",
+      "x": 0.41796833966260105,
+      "y": 0.37682600056648247,
+      "zone_id": "zone-lounge",
+      "activity": "WALKING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:39.427Z",
+      "x": 0.4228895757194779,
+      "y": 0.37459389336374593,
+      "zone_id": "zone-lounge",
+      "activity": "WALKING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:40.428Z",
+      "x": 0.4215872126565853,
+      "y": 0.3745695762111966,
+      "zone_id": "zone-lounge",
+      "activity": "WALKING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:41.428Z",
+      "x": 0.7146269440314492,
+      "y": 0.3391843359472763,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:42.428Z",
+      "x": 0.7131831250377603,
+      "y": 0.3368499890487413,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:43.429Z",
+      "x": 0.7081825747235863,
+      "y": 0.34596743097932103,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:44.430Z",
+      "x": 0.7050243731048778,
+      "y": 0.33560167043328826,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:45.431Z",
+      "x": 0.7055786052999693,
+      "y": 0.34132659572247087,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:46.430Z",
+      "x": 0.7072167639368762,
+      "y": 0.3414604710786519,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:47.431Z",
+      "x": 0.7081203129979935,
+      "y": 0.3361584399721012,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:48.431Z",
+      "x": 0.7148018431046042,
+      "y": 0.3402198442935608,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:49.431Z",
+      "x": 0.705250213342265,
+      "y": 0.3348757770771737,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:50.432Z",
+      "x": 0.7119269098701976,
+      "y": 0.3407377994583931,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:51.433Z",
+      "x": 0.7040514271096092,
+      "y": 0.34162175966187874,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:52.435Z",
+      "x": 0.7125628401032216,
+      "y": 0.34141270094788295,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:53.436Z",
+      "x": 0.7123240927668604,
+      "y": 0.33688870201683985,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:54.436Z",
+      "x": 0.7040710242560998,
+      "y": 0.34249781685369257,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:55.437Z",
+      "x": 0.7058397015256468,
+      "y": 0.3438175491263743,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:56.438Z",
+      "x": 0.7051835507421146,
+      "y": 0.33546259046805055,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:57.439Z",
+      "x": 0.7071881498213622,
+      "y": 0.3361721879843776,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:58.440Z",
+      "x": 0.7084375427346312,
+      "y": 0.3412630141938952,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:14:59.440Z",
+      "x": 0.7124015679031995,
+      "y": 0.339250642525989,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:00.441Z",
+      "x": 0.7155822537477071,
+      "y": 0.33758451384731136,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:01.442Z",
+      "x": 0.7058218774070927,
+      "y": 0.3445682190124969,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:02.443Z",
+      "x": 0.7154705994601356,
+      "y": 0.3424906057764823,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:03.443Z",
+      "x": 0.7073801470336111,
+      "y": 0.3422822198433913,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:04.444Z",
+      "x": 0.7054143036376428,
+      "y": 0.33808336635826214,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:05.446Z",
+      "x": 0.7105044723970133,
+      "y": 0.34158170578842406,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:06.446Z",
+      "x": 0.7077637436122357,
+      "y": 0.3371238232142376,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:07.446Z",
+      "x": 0.7105920767093501,
+      "y": 0.33821714581520523,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:08.447Z",
+      "x": 0.7078686073263176,
+      "y": 0.3424588915054665,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:09.449Z",
+      "x": 0.7075047826853622,
+      "y": 0.3342889217916855,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:10.449Z",
+      "x": 0.7133224323357693,
+      "y": 0.3418048239701709,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:11.449Z",
+      "x": 0.7109462789836016,
+      "y": 0.3456432601816982,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:12.451Z",
+      "x": 0.7110766901673998,
+      "y": 0.33773289699046105,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:13.451Z",
+      "x": 0.7103512683407037,
+      "y": 0.34081014921654934,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:14.451Z",
+      "x": 0.7127166996286874,
+      "y": 0.3410217081166761,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:15.451Z",
+      "x": 0.7115003855912321,
+      "y": 0.34520732334370535,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:16.452Z",
+      "x": 0.7111844003255402,
+      "y": 0.3407863019476559,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:17.452Z",
+      "x": 0.7156229500684771,
+      "y": 0.3347109275912547,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:18.453Z",
+      "x": 0.7105346013813736,
+      "y": 0.3417898847593969,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:19.454Z",
+      "x": 0.7111356039649427,
+      "y": 0.3381374531741646,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:20.455Z",
+      "x": 0.7068222975523103,
+      "y": 0.34426298677083433,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:21.455Z",
+      "x": 0.09841509588595727,
+      "y": 0.7179444591751586,
+      "zone_id": "zone-door",
+      "activity": "WALKING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:22.454Z",
+      "x": 0.10508332903571413,
+      "y": 0.7245624562988191,
+      "zone_id": "zone-door",
+      "activity": "WALKING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:23.455Z",
+      "x": 0.10357368910927688,
+      "y": 0.7185350822983794,
+      "zone_id": "zone-door",
+      "activity": "WALKING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:24.456Z",
+      "x": 0.09737582382108666,
+      "y": 0.7187084402560507,
+      "zone_id": "zone-door",
+      "activity": "WALKING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:25.457Z",
+      "x": 0.28042941042802133,
+      "y": 0.6195203117315972,
+      "zone_id": null,
+      "activity": "WALKING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:26.459Z",
+      "x": 0.2765430583423404,
+      "y": 0.6213233465449404,
+      "zone_id": null,
+      "activity": "WALKING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:27.459Z",
+      "x": 0.27415383099689744,
+      "y": 0.6142552227043209,
+      "zone_id": null,
+      "activity": "WALKING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:28.459Z",
+      "x": 0.44521272915546833,
+      "y": 0.48470647713747866,
+      "zone_id": null,
+      "activity": "WALKING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:29.459Z",
+      "x": 0.4505275217218312,
+      "y": 0.4772360389205528,
+      "zone_id": null,
+      "activity": "WALKING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:30.460Z",
+      "x": 0.45051109352344326,
+      "y": 0.4820148759768457,
+      "zone_id": null,
+      "activity": "WALKING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:31.461Z",
+      "x": 0.4448268673815645,
+      "y": 0.4769521959142856,
+      "zone_id": null,
+      "activity": "WALKING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:32.462Z",
+      "x": 0.6859514267240788,
+      "y": 0.35095500707063887,
+      "zone_id": "zone-chair",
+      "activity": "STANDING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:33.464Z",
+      "x": 0.6754971907150166,
+      "y": 0.3504699687363161,
+      "zone_id": "zone-chair",
+      "activity": "STANDING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:34.465Z",
+      "x": 0.6779277764907302,
+      "y": 0.34982774731678556,
+      "zone_id": "zone-chair",
+      "activity": "STANDING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:35.465Z",
+      "x": 0.685746045349442,
+      "y": 0.348675981370885,
+      "zone_id": "zone-chair",
+      "activity": "STANDING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:36.466Z",
+      "x": 0.6822886311944172,
+      "y": 0.35062212710643054,
+      "zone_id": "zone-chair",
+      "activity": "STANDING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:37.468Z",
+      "x": 0.7214633140114797,
+      "y": 0.33625329609052357,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:38.468Z",
+      "x": 0.716589783649014,
+      "y": 0.3356903337125925,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:39.468Z",
+      "x": 0.7185030447717395,
+      "y": 0.3343378414092641,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:40.469Z",
+      "x": 0.7204271491964749,
+      "y": 0.336475080580785,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:41.469Z",
+      "x": 0.7183275516713827,
+      "y": 0.3415181714798389,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:42.470Z",
+      "x": 0.7158537295222045,
+      "y": 0.33414131524927726,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:43.471Z",
+      "x": 0.7233054311985918,
+      "y": 0.33583613999191797,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:44.472Z",
+      "x": 0.7182639466264249,
+      "y": 0.33844280548637923,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:45.472Z",
+      "x": 0.725831987815104,
+      "y": 0.3412102745519118,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:46.473Z",
+      "x": 0.7165633740299221,
+      "y": 0.34503326072611,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:47.473Z",
+      "x": 0.7241936416890025,
+      "y": 0.34507988767856357,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:48.474Z",
+      "x": 0.7230244717021196,
+      "y": 0.33731746399096674,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:49.475Z",
+      "x": 0.7156600694348905,
+      "y": 0.33657519720890083,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:50.476Z",
+      "x": 0.7192994190115103,
+      "y": 0.338992828623354,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:51.476Z",
+      "x": 0.7189087049246551,
+      "y": 0.341541245416858,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:52.477Z",
+      "x": 0.7175423348161474,
+      "y": 0.34407690082604825,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:53.478Z",
+      "x": 0.718045995417348,
+      "y": 0.33794117474224605,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:54.479Z",
+      "x": 0.7216589979592408,
+      "y": 0.33881346450303296,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:55.481Z",
+      "x": 0.7233334937254229,
+      "y": 0.34388823239831284,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:56.481Z",
+      "x": 0.7167623579744603,
+      "y": 0.34106723379443166,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:57.482Z",
+      "x": 0.7241435672583671,
+      "y": 0.34582643847314143,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:58.483Z",
+      "x": 0.72504955073947,
+      "y": 0.3389477531471889,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:15:59.484Z",
+      "x": 0.7171825462817846,
+      "y": 0.33883632798458346,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:00.485Z",
+      "x": 0.7245238076688145,
+      "y": 0.3372151743353824,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:01.486Z",
+      "x": 0.7159767301878647,
+      "y": 0.33669783640946743,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:02.487Z",
+      "x": 0.7192954779455476,
+      "y": 0.34457512568461207,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:03.489Z",
+      "x": 0.7239937366488484,
+      "y": 0.34552319157949873,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:04.489Z",
+      "x": 0.7187636851365868,
+      "y": 0.3436809683383912,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:05.490Z",
+      "x": 0.7180101513788064,
+      "y": 0.3377320554215011,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:06.491Z",
+      "x": 0.7161745479653512,
+      "y": 0.3412474531869567,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:07.493Z",
+      "x": 0.7183848537138906,
+      "y": 0.33685218665642375,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:08.494Z",
+      "x": 0.7215038377118042,
+      "y": 0.335345906021884,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:09.494Z",
+      "x": 0.7183404319895121,
+      "y": 0.3408898680070349,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:10.494Z",
+      "x": 0.7205533451159105,
+      "y": 0.33741908452903757,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:11.494Z",
+      "x": 0.7250181772571085,
+      "y": 0.3421866112501164,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:12.494Z",
+      "x": 0.7043702162685341,
+      "y": 0.3590203014790751,
+      "zone_id": "zone-chair",
+      "activity": "STANDING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:13.496Z",
+      "x": 0.7025925177297002,
+      "y": 0.3591742122240557,
+      "zone_id": "zone-chair",
+      "activity": "STANDING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:14.496Z",
+      "x": 0.7028910156143858,
+      "y": 0.35959553381373593,
+      "zone_id": "zone-chair",
+      "activity": "STANDING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:17.622Z",
+      "x": 0.715764485846263,
+      "y": 0.3401444871523253,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:18.622Z",
+      "x": 0.7211070275260656,
+      "y": 0.3380540528928448,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:19.624Z",
+      "x": 0.7193189144466035,
+      "y": 0.33400211880575803,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:20.624Z",
+      "x": 0.7204810366361838,
+      "y": 0.3408917180521504,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:21.624Z",
+      "x": 0.715691821917807,
+      "y": 0.3359876050210897,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:22.625Z",
+      "x": 0.7146272850207905,
+      "y": 0.3427948040175917,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:23.626Z",
+      "x": 0.715187614468868,
+      "y": 0.34030134889103425,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:24.626Z",
+      "x": 0.7233319149176124,
+      "y": 0.339463302436992,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:25.626Z",
+      "x": 0.7230231506148361,
+      "y": 0.3390467427336957,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:26.627Z",
+      "x": 0.7215902925109293,
+      "y": 0.3403372306383649,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:27.626Z",
+      "x": 0.7146542503861486,
+      "y": 0.33971471159444855,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:28.627Z",
+      "x": 0.7181112100686391,
+      "y": 0.3456624591419627,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:29.629Z",
+      "x": 0.7233190318292647,
+      "y": 0.33852044253662816,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:30.630Z",
+      "x": 0.7225203095566367,
+      "y": 0.3375408028855904,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:31.629Z",
+      "x": 0.7141493081900444,
+      "y": 0.33838036072531374,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:34.778Z",
+      "x": 0.7169882279461138,
+      "y": 0.3432157024854465,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:35.779Z",
+      "x": 0.7218865118757103,
+      "y": 0.33420211641067615,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:36.778Z",
+      "x": 0.7241425000960906,
+      "y": 0.3421726743408715,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:37.779Z",
+      "x": 0.7179021036320629,
+      "y": 0.34588718271780744,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:38.778Z",
+      "x": 0.7185245844918422,
+      "y": 0.3440652164872225,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:39.779Z",
+      "x": 0.7148174810221913,
+      "y": 0.33482886672619205,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:40.781Z",
+      "x": 0.7188345843403979,
+      "y": 0.33920116247499776,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:41.781Z",
+      "x": 0.7184267311229883,
+      "y": 0.33424926549454936,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:42.782Z",
+      "x": 0.7205475437374761,
+      "y": 0.3344874317902998,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:43.782Z",
+      "x": 0.7224678857927914,
+      "y": 0.3422521458498102,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:44.783Z",
+      "x": 0.7142605204645189,
+      "y": 0.3445573739972132,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:45.783Z",
+      "x": 0.723363288600752,
+      "y": 0.3395524420470527,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:46.783Z",
+      "x": 0.724432118560624,
+      "y": 0.3438591887652946,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:47.785Z",
+      "x": 0.7171502041514596,
+      "y": 0.3418040111760207,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:48.784Z",
+      "x": 0.72077979821293,
+      "y": 0.3437924545755056,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:49.785Z",
+      "x": 0.7144231700222518,
+      "y": 0.33900331931204203,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:50.793Z",
+      "x": 0.7149598896042811,
+      "y": 0.34015541218363327,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:51.792Z",
+      "x": 0.7154985130328535,
+      "y": 0.33827334086346605,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:52.793Z",
+      "x": 0.7213401014970302,
+      "y": 0.33507053444580664,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:53.793Z",
+      "x": 0.7235273927506106,
+      "y": 0.34278716192518,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:54.794Z",
+      "x": 0.7206086025059517,
+      "y": 0.3386850886297599,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:55.794Z",
+      "x": 0.7212658073233673,
+      "y": 0.34408192613665406,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:56.795Z",
+      "x": 0.7153983182707023,
+      "y": 0.342976490201885,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:57.795Z",
+      "x": 0.719008665251253,
+      "y": 0.3397160644624822,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:58.796Z",
+      "x": 0.7207042888785722,
+      "y": 0.3400175916622845,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:16:59.796Z",
+      "x": 0.7153533326297469,
+      "y": 0.3380015765980936,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:17:00.798Z",
+      "x": 0.7170772362210923,
+      "y": 0.34442826136315646,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:17:01.798Z",
+      "x": 0.7177676032052946,
+      "y": 0.34215539332415945,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:17:02.799Z",
+      "x": 0.7149720038091045,
+      "y": 0.3418570100601056,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:17:03.800Z",
+      "x": 0.7253350714609571,
+      "y": 0.3408849083446631,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:17:04.800Z",
+      "x": 0.7166790180472183,
+      "y": 0.34457339995917496,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:17:05.801Z",
+      "x": 0.7196206708217485,
+      "y": 0.3405208608362372,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:17:06.801Z",
+      "x": 0.7212459617613378,
+      "y": 0.3438841587491182,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:17:07.803Z",
+      "x": 0.7195748451872642,
+      "y": 0.3401805336321804,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:17:08.803Z",
+      "x": 0.7204995310285487,
+      "y": 0.3342895341777948,
+      "zone_id": "zone-chair",
+      "activity": "SITTING"
+    },
+    {
+      "timestamp": "2026-09-26T06:17:09.804Z",
+      "x": 0.697512463247895,
+      "y": 0.36193176398031135,
+      "zone_id": "zone-chair",
+      "activity": "STANDING"
+    },
+    {
+      "timestamp": "2026-09-26T06:17:10.804Z",
+      "x": 0.7001488459137679,
+      "y": 0.3620350154126889,
+      "zone_id": "zone-chair",
+      "activity": "STANDING"
+    },
+    {
+      "timestamp": "2026-09-26T06:17:11.804Z",
+      "x": 0.7035382927241489,
+      "y": 0.36170663418887955,
+      "zone_id": "zone-chair",
+      "activity": "STANDING"
+    },
+    {
+      "timestamp": "2026-09-26T06:17:12.805Z",
+      "x": 0.7016199867293935,
+      "y": 0.3631964074532057,
+      "zone_id": "zone-chair",
+      "activity": "STANDING"
     }
   ],
   "dailyStats": {
     "2026-09-26": {
       "date": "2026-09-26",
-      "totalOccupiedSeconds": 21357,
-      "sittingSeconds": 16153,
-      "standingSeconds": 3173,
-      "walkingSeconds": 2031,
+      "totalOccupiedSeconds": 21575,
+      "sittingSeconds": 16336,
+      "standingSeconds": 3189,
+      "walkingSeconds": 2050,
       "lyingSeconds": 0,
       "unknownSeconds": 0,
       "sessionsCount": 3,
@@ -9965,9 +11869,9 @@
       "inactivityAlertsCount": 0,
       "zoneUsageSeconds": {
         "zone-desk": 13800,
-        "zone-chair": 12600,
-        "zone-lounge": 2854,
-        "zone-door": 500
+        "zone-chair": 12781,
+        "zone-lounge": 2876,
+        "zone-door": 504
       }
     },
     "2026-09-25": {
@@ -9996,7 +11900,7 @@
   "status": {
     "isOccupied": true,
     "currentPersonId": "person_001",
-    "currentActivity": "SITTING",
+    "currentActivity": "STANDING",
     "currentZone": {
       "id": "zone-chair",
       "name": "Ergo Chair",
@@ -10007,21 +11911,21 @@
       "width": 0.2,
       "height": 0.28
     },
-    "sessionDurationSeconds": 583,
-    "activityDurationSeconds": 34,
-    "lastUpdated": "2026-09-26T06:13:28.058Z",
+    "sessionDurationSeconds": 38,
+    "activityDurationSeconds": 3,
+    "lastUpdated": "2026-09-26T06:17:12.805Z",
     "position": {
-      "x": 0.7076718063436457,
-      "y": 0.33893525005373587
+      "x": 0.7016199867293935,
+      "y": 0.3631964074532057
     },
     "bbox": {
-      "x": 0.6399999999999999,
-      "y": 0.22000000000000003,
-      "width": 0.14,
-      "height": 0.22
+      "x": 0.6299999999999999,
+      "y": 0.18,
+      "width": 0.12,
+      "height": 0.36
     },
-    "velocity": 0.006911406286945181,
-    "inactivitySeconds": 34,
+    "velocity": 0.0024288520474939337,
+    "inactivitySeconds": 38,
     "activeAlert": null
   }
 }

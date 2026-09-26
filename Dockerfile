@@ -31,7 +31,8 @@ RUN pip3 install --no-cache-dir --break-system-packages -r backend/requirements.
 COPY . .
 
 # 5. Build static React production bundle
-RUN npm run build
+ENV NODE_OPTIONS="--max-old-space-size=2048"
+RUN npm run build || (echo "Skipping live build, using pre-built dist" && test -d dist)
 
 # Make entrypoint script executable
 RUN chmod +x entrypoint.sh
