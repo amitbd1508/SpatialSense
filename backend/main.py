@@ -93,49 +93,164 @@ def root_view():
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>SpatialSense - Raspberry Pi Edge Node</title>
+        <title>SpatialSense - Privacy-Preserving Spatial Intelligence Dashboard</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
         <style>
+            :root {
+                --bg: #09090b;
+                --card-bg: #121215;
+                --card-border: #222228;
+                --text: #f4f4f6;
+                --muted: #8e8e99;
+                --accent: #10b981;
+                --accent-dim: rgba(16, 185, 129, 0.15);
+                --danger: #ef4444;
+                --danger-dim: rgba(239, 68, 68, 0.15);
+                --sky: #0ea5e9;
+                --sky-dim: rgba(14, 165, 233, 0.15);
+            }
+            * { box-sizing: border-box; margin: 0; padding: 0; }
             body {
-                background: #090d16;
-                color: #e2e8f0;
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-                margin: 0;
-                padding: 24px;
+                background: var(--bg);
+                color: var(--text);
+                font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+                min-height: 100vh;
                 display: flex;
                 flex-direction: column;
-                align-items: center;
             }
-            .card {
-                background: #0f172a;
-                border: 1px solid #1e293b;
-                border-radius: 12px;
-                max-width: 800px;
-                width: 100%;
-                overflow: hidden;
-                box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            }
-            .header {
-                padding: 16px 20px;
-                border-bottom: 1px solid #1e293b;
+            header {
+                background: #0d0d10;
+                border-bottom: 1px solid var(--card-border);
+                padding: 14px 24px;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                position: sticky;
+                top: 0;
+                z-index: 50;
             }
-            .title {
+            .brand {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+            .brand-logo {
+                width: 32px;
+                height: 32px;
+                border-radius: 8px;
+                background: linear-gradient(135deg, #10b981, #059669);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 700;
+                color: #fff;
                 font-size: 16px;
-                font-weight: 600;
-                color: #f8fafc;
             }
-            .badge {
-                background: rgba(16, 185, 129, 0.15);
-                color: #34d399;
-                border: 1px solid rgba(16, 185, 129, 0.3);
-                padding: 4px 10px;
+            .brand-title {
+                font-size: 15px;
+                font-weight: 700;
+                letter-spacing: -0.01em;
+            }
+            .brand-sub {
+                font-size: 11px;
+                color: var(--muted);
+            }
+            .status-pill {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                padding: 6px 14px;
                 border-radius: 9999px;
+                background: var(--accent-dim);
+                border: 1px solid rgba(16, 185, 129, 0.3);
                 font-size: 12px;
-                font-weight: 500;
+                color: #34d399;
+                font-weight: 600;
             }
-            .video-container {
+            .pulse-dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: #10b981;
+                box-shadow: 0 0 10px #10b981;
+                animation: pulse 1.8s infinite;
+            }
+            @keyframes pulse {
+                0%, 100% { opacity: 1; transform: scale(1); }
+                50% { opacity: 0.4; transform: scale(0.85); }
+            }
+            main {
+                max-width: 1440px;
+                width: 100%;
+                margin: 0 auto;
+                padding: 24px;
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+                flex: 1;
+            }
+            .metrics-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                gap: 16px;
+            }
+            .card {
+                background: var(--card-bg);
+                border: 1px solid var(--card-border);
+                border-radius: 12px;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+            .card-title {
+                font-size: 12px;
+                color: var(--muted);
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                font-weight: 600;
+                margin-bottom: 8px;
+            }
+            .card-value {
+                font-size: 28px;
+                font-weight: 700;
+                font-family: 'JetBrains Mono', monospace;
+                letter-spacing: -0.02em;
+            }
+            .card-sub {
+                font-size: 12px;
+                color: var(--muted);
+                margin-top: 6px;
+            }
+            .main-grid {
+                display: grid;
+                grid-template-columns: 2fr 1fr;
+                gap: 24px;
+            }
+            @media (max-width: 960px) {
+                .main-grid { grid-template-columns: 1fr; }
+            }
+            .video-card {
+                background: var(--card-bg);
+                border: 1px solid var(--card-border);
+                border-radius: 14px;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+            }
+            .video-header {
+                padding: 14px 20px;
+                border-bottom: 1px solid var(--card-border);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                font-size: 13px;
+                font-weight: 600;
+                background: #0e0e12;
+            }
+            .viewport-container {
                 position: relative;
                 width: 100%;
                 aspect-ratio: 16 / 10;
@@ -143,50 +258,353 @@ def root_view():
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                overflow: hidden;
             }
-            .video-container img {
+            .viewport-container img {
                 width: 100%;
                 height: 100%;
                 object-fit: contain;
             }
-            .footer {
-                padding: 16px 20px;
-                display: flex;
-                flex-wrap: wrap;
+            .video-footer {
+                padding: 14px 20px;
+                border-top: 1px solid var(--card-border);
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
                 gap: 12px;
-                font-size: 13px;
-                background: #090d16;
-                border-top: 1px solid #1e293b;
+                font-size: 12px;
+                background: #0e0e12;
             }
-            .link-btn {
-                background: #1e293b;
-                color: #38bdf8;
+            .tele-label {
+                color: var(--muted);
+                font-size: 11px;
+                margin-bottom: 2px;
+            }
+            .tele-val {
+                font-family: 'JetBrains Mono', monospace;
+                font-weight: 600;
+            }
+            .side-column {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+            }
+            .btn {
+                background: #1f1f26;
+                color: var(--text);
+                border: 1px solid var(--card-border);
+                padding: 10px 16px;
+                border-radius: 8px;
+                font-size: 12px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.2s;
+                text-align: center;
                 text-decoration: none;
-                padding: 6px 12px;
-                border-radius: 6px;
-                transition: background 0.2s;
+                display: inline-block;
             }
-            .link-btn:hover {
-                background: #334155;
+            .btn:hover {
+                background: #2a2a35;
+                border-color: #3b3b4a;
+            }
+            .btn-danger {
+                background: var(--danger-dim);
+                border-color: rgba(239, 68, 68, 0.3);
+                color: #f87171;
+            }
+            .btn-danger:hover {
+                background: rgba(239, 68, 68, 0.25);
+            }
+            .timeline-card {
+                background: var(--card-bg);
+                border: 1px solid var(--card-border);
+                border-radius: 12px;
+                overflow: hidden;
+            }
+            .timeline-header {
+                padding: 16px 20px;
+                border-bottom: 1px solid var(--card-border);
+                font-size: 13px;
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .timeline-list {
+                max-height: 280px;
+                overflow-y: auto;
+                font-size: 12px;
+            }
+            .timeline-item {
+                padding: 10px 20px;
+                border-bottom: 1px solid #1a1a20;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .timeline-item:last-child { border-bottom: none; }
+            .timeline-time {
+                font-family: 'JetBrains Mono', monospace;
+                color: var(--muted);
+                width: 80px;
+            }
+            .badge-posture {
+                padding: 3px 8px;
+                border-radius: 6px;
+                font-size: 11px;
+                font-weight: 600;
+            }
+            .badge-SITTING { background: var(--accent-dim); color: #34d399; }
+            .badge-STANDING { background: var(--sky-dim); color: #38bdf8; }
+            .badge-POSSIBLE_FALL { background: var(--danger-dim); color: #f87171; animation: pulse 1s infinite; }
+            .badge-WALKING { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
+            .alert-banner {
+                background: #450a0a;
+                border: 1px solid #991b1b;
+                color: #fecaca;
+                padding: 14px 20px;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                font-size: 13px;
+                margin-bottom: 16px;
             }
         </style>
     </head>
     <body>
-        <div class="card">
-            <div class="header">
-                <span class="title">SpatialSense: Raspberry Pi Live Camera Stream</span>
-                <span class="badge">Edge CV Active</span>
+        <header>
+            <div class="brand">
+                <div class="brand-logo">S</div>
+                <div>
+                    <div class="brand-title">SpatialSense Edge Node</div>
+                    <div class="brand-sub">Raspberry Pi Optical Activity & Fall Monitor</div>
+                </div>
             </div>
-            <div class="video-container">
-                <img src="/api/camera/stream" alt="Live USB Camera Feed" onerror="this.onerror=null; this.src=''; this.parentElement.innerHTML='<p style=\\'color:#94a3b8;\\'>Connecting to USB Camera (/dev/video0)...</p>';" />
+            <div class="status-pill">
+                <div class="pulse-dot"></div>
+                <span id="header-status">Edge Engine Active · Zero Video Upload</span>
             </div>
-            <div class="footer">
-                <a class="link-btn" href="/api/camera/stream" target="_blank">Direct MJPEG Stream</a>
-                <a class="link-btn" href="/api/health" target="_blank">Health Check</a>
-                <a class="link-btn" href="/api/status" target="_blank">Live Room Status</a>
-                <a class="link-btn" href="/docs" target="_blank">Interactive API Docs (Swagger)</a>
+        </header>
+
+        <main>
+            <!-- Dynamic Alert Banner if fall detected -->
+            <div id="fall-alert-banner" class="alert-banner" style="display: none;">
+                <div>
+                    <strong>POTENTIAL FALL DETECTED</strong>
+                    <div id="fall-alert-detail" style="font-size: 11px; margin-top: 2px;">Rapid vertical descent and horizontal posture detected on USB camera.</div>
+                </div>
+                <button class="btn" onclick="acknowledgeAlert()" style="background: #991b1b; color: #fff; border: none;">Acknowledge Alert</button>
             </div>
-        </div>
+
+            <!-- Top Metric Cards -->
+            <div class="metrics-grid">
+                <div class="card">
+                    <div class="card-title">Room Occupancy</div>
+                    <div class="card-value" id="val-occupancy" style="color: #34d399;">Active</div>
+                    <div class="card-sub" id="val-person-id">Person ID: person_001</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Current Posture</div>
+                    <div class="card-value" id="val-posture" style="color: #38bdf8;">STANDING</div>
+                    <div class="card-sub" id="val-zone">In Zone: Work Desk</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Session Duration</div>
+                    <div class="card-value" id="val-duration">00:00:00</div>
+                    <div class="card-sub">Continuous presence since entry</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Posture Duration</div>
+                    <div class="card-value" id="val-posture-duration" style="color: #fbbf24;">00:00:00</div>
+                    <div class="card-sub">Current state stability</div>
+                </div>
+            </div>
+
+            <!-- Main Interactive Section -->
+            <div class="main-grid">
+                <!-- Left: Live Video Stream & HUD -->
+                <div class="video-card">
+                    <div class="video-header">
+                        <span>Live USB Camera Feed (Annotated HUD)</span>
+                        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted);" id="stream-info">/dev/video0 · 640x480 @ 10fps</span>
+                    </div>
+                    <div class="viewport-container">
+                        <img id="camera-stream-img" src="/api/camera/stream" alt="Live Camera Feed"
+                             onerror="this.onerror=null; this.src=''; this.parentElement.innerHTML='<div style=\\'text-align:center; padding:24px; color:#94a3b8;\\'><h3>Waiting for USB Camera...</h3><p style=\\'font-size:12px; margin-top:6px;\\'>Ensure USB camera is plugged in. Check: ls /dev/video*</p></div>';" />
+                    </div>
+                    <div class="video-footer">
+                        <div>
+                            <div class="tele-label">Coordinates (X, Y)</div>
+                            <div class="tele-val" id="tele-pos">0.500, 0.500</div>
+                        </div>
+                        <div>
+                            <div class="tele-label">Bounding Box</div>
+                            <div class="tele-val" id="tele-bbox">0.24 x 0.55</div>
+                        </div>
+                        <div>
+                            <div class="tele-label">Confidence</div>
+                            <div class="tele-val" id="tele-conf" style="color: #34d399;">94%</div>
+                        </div>
+                        <div>
+                            <div class="tele-label">Privacy Shield</div>
+                            <div class="tele-val" style="color: #38bdf8;">On-Device Only</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Controls, Safety Tests & Quick Endpoints -->
+                <div class="side-column">
+                    <!-- Fall Detection Test Card -->
+                    <div class="card" style="gap: 12px;">
+                        <div class="card-title">Incident Alert Test</div>
+                        <p style="font-size: 12px; color: var(--muted); line-height: 1.5;">
+                            Simulate an emergency fall event to verify the alert trigger and emergency banner pipeline.
+                        </p>
+                        <button class="btn btn-danger" onclick="triggerFallTest()">Test Fall Alert</button>
+                    </div>
+
+                    <!-- Room Zones Summary -->
+                    <div class="card" style="gap: 8px;">
+                        <div class="card-title">Calibrated Room Zones</div>
+                        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 12px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span>Work Desk (Desk)</span>
+                                <span style="color: #10b981; font-weight: 600;">Zone 1</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span>Ergonomic Chair</span>
+                                <span style="color: #8b5cf6; font-weight: 600;">Zone 2</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span>Lounge / Couch</span>
+                                <span style="color: #f59e0b; font-weight: 600;">Zone 3</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span>Room Entry Door</span>
+                                <span style="color: #06b6d4; font-weight: 600;">Zone 4</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Endpoints -->
+                    <div class="card" style="gap: 8px;">
+                        <div class="card-title">Developer Quick Links</div>
+                        <a class="btn" href="/api/camera/stream" target="_blank">Direct MJPEG Stream</a>
+                        <a class="btn" href="/api/status" target="_blank">Raw Status JSON</a>
+                        <a class="btn" href="/api/health" target="_blank">Health Endpoint</a>
+                        <a class="btn" href="/docs" target="_blank">FastAPI Swagger Docs</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity Event Log -->
+            <div class="timeline-card">
+                <div class="timeline-header">
+                    <span>Recent Spatial Observations & Events</span>
+                    <span style="font-size: 11px; color: var(--muted);" id="event-count">Live Stream</span>
+                </div>
+                <div class="timeline-list" id="timeline-list">
+                    <div class="timeline-item">
+                        <span class="timeline-time">Now</span>
+                        <span>Monitoring active space</span>
+                        <span class="badge-posture badge-STANDING">ACTIVE</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script>
+            function formatSecs(s) {
+                const hrs = Math.floor(s / 3600).toString().padStart(2, '0');
+                const mins = Math.floor((s % 3600) / 60).toString().padStart(2, '0');
+                const secs = Math.floor(s % 60).toString().padStart(2, '0');
+                return `${hrs}:${mins}:${secs}`;
+            }
+
+            let lastActivity = '';
+            const events = [];
+
+            async function updateDashboard() {
+                try {
+                    const res = await fetch('/api/status');
+                    if (!res.ok) return;
+                    const data = await res.json();
+
+                    // Update metrics
+                    document.getElementById('val-occupancy').innerText = data.isOccupied ? 'Active' : 'Vacant';
+                    document.getElementById('val-occupancy').style.color = data.isOccupied ? '#34d399' : '#94a3b8';
+                    document.getElementById('val-person-id').innerText = data.currentPersonId ? `Person ID: ${data.currentPersonId}` : 'No person detected';
+
+                    document.getElementById('val-posture').innerText = data.currentActivity || 'UNKNOWN';
+                    document.getElementById('val-zone').innerText = `In Zone: ${data.currentZone?.name || 'Open Area'}`;
+
+                    document.getElementById('val-duration').innerText = formatSecs(data.sessionDurationSeconds || 0);
+                    document.getElementById('val-posture-duration').innerText = formatSecs(data.activityDurationSeconds || 0);
+
+                    // Telemetry
+                    if (data.position) {
+                        document.getElementById('tele-pos').innerText = `${data.position.x.toFixed(3)}, ${data.position.y.toFixed(3)}`;
+                    }
+                    if (data.bbox) {
+                        document.getElementById('tele-bbox').innerText = `${data.bbox.width.toFixed(2)} x ${data.bbox.height.toFixed(2)}`;
+                    }
+
+                    // Fall Alert Banner
+                    const alertBanner = document.getElementById('fall-alert-banner');
+                    if (data.activeAlert && !data.activeAlert.acknowledged) {
+                        alertBanner.style.display = 'flex';
+                        document.getElementById('fall-alert-detail').innerText = data.activeAlert.metadata?.reason || 'Possible fall detected';
+                    } else {
+                        alertBanner.style.display = 'none';
+                    }
+
+                    // Add to timeline on posture change
+                    if (data.currentActivity && data.currentActivity !== lastActivity) {
+                        lastActivity = data.currentActivity;
+                        const now = new Date();
+                        const timeStr = now.toTimeString().split(' ')[0];
+                        const list = document.getElementById('timeline-list');
+                        const item = document.createElement('div');
+                        item.className = 'timeline-item';
+                        item.innerHTML = `
+                            <span class="timeline-time">${timeStr}</span>
+                            <span>Person transitioned to <strong>${data.currentActivity}</strong> in ${data.currentZone?.name || 'Room'}</span>
+                            <span class="badge-posture badge-${data.currentActivity}">${data.currentActivity}</span>
+                        `;
+                        list.prepend(item);
+                    }
+                } catch (e) {
+                    console.warn('Dashboard poll error:', e);
+                }
+            }
+
+            async function triggerFallTest() {
+                try {
+                    await fetch('/api/simulate/fall', { method: 'POST' });
+                    updateDashboard();
+                } catch (e) {
+                    alert('Simulation trigger failed');
+                }
+            }
+
+            async function acknowledgeAlert() {
+                try {
+                    const statusRes = await fetch('/api/status');
+                    const statusData = await statusRes.json();
+                    if (statusData.activeAlert) {
+                        await fetch(`/api/events/${statusData.activeAlert.id}/acknowledge`, { method: 'POST' });
+                    }
+                    document.getElementById('fall-alert-banner').style.display = 'none';
+                    updateDashboard();
+                } catch (e) {
+                    document.getElementById('fall-alert-banner').style.display = 'none';
+                }
+            }
+
+            // High frequency status update (every 1 second)
+            setInterval(updateDashboard, 1000);
+            updateDashboard();
+        </script>
     </body>
     </html>
     """
